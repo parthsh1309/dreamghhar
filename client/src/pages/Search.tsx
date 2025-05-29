@@ -4,11 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Search as SearchIcon } from "lucide-react";
 import PropertyCard from "@/components/PropertyCard";
-import { properties, locations, propertyTypes, priceRanges } from "@/data/properties";
+import { properties, locations, propertyTypes, priceRanges, rentRanges, listingTypes } from "@/data/properties";
 
 export default function Search() {
   const [locationFilter, setLocationFilter] = useState<string>("");
   const [typeFilter, setTypeFilter] = useState<string>("");
+  const [listingTypeFilter, setListingTypeFilter] = useState<string>("");
   const [priceFilter, setPriceFilter] = useState<string>("");
 
   const filteredProperties = useMemo(() => {
@@ -23,6 +24,10 @@ export default function Search() {
         matches = false;
       }
 
+      if (listingTypeFilter && property.listingType !== listingTypeFilter) {
+        matches = false;
+      }
+
       if (priceFilter) {
         const [min, max] = priceFilter.split('-').map(p => p === '+' ? Infinity : parseInt(p));
         if (max && (property.price < min || property.price > max)) {
@@ -34,12 +39,18 @@ export default function Search() {
 
       return matches;
     });
-  }, [locationFilter, typeFilter, priceFilter]);
+  }, [locationFilter, typeFilter, listingTypeFilter, priceFilter]);
 
   const clearFilters = () => {
     setLocationFilter("");
     setTypeFilter("");
+    setListingTypeFilter("");
     setPriceFilter("");
+  };
+
+  // Get appropriate price ranges based on listing type
+  const getCurrentPriceRanges = () => {
+    return listingTypeFilter === 'rent' ? rentRanges : priceRanges;
   };
 
   return (
@@ -61,7 +72,27 @@ export default function Search() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+              <div>
+                <label className="block text-sm font-medium mb-2">Buy or Rent</label>
+                <Select value={listingTypeFilter} onValueChange={(value) => {
+                  setListingTypeFilter(value);
+                  setPriceFilter(""); // Reset price filter when changing listing type
+                }}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Buy or Rent" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="">Both</SelectItem>
+                    {listingTypes.map((type) => (
+                      <SelectItem key={type.value} value={type.value}>
+                        {type.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
               <div>
                 <label className="block text-sm font-medium mb-2">Location</label>
                 <Select value={locationFilter} onValueChange={setLocationFilter}>
@@ -97,14 +128,16 @@ export default function Search() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Price Range</label>
+                <label className="block text-sm font-medium mb-2">
+                  {listingTypeFilter === 'rent' ? 'Rent Range' : 'Price Range'}
+                </label>
                 <Select value={priceFilter} onValueChange={setPriceFilter}>
                   <SelectTrigger>
-                    <SelectValue placeholder="All Prices" />
+                    <SelectValue placeholder={listingTypeFilter === 'rent' ? 'All Rent' : 'All Prices'} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All Prices</SelectItem>
-                    {priceRanges.map((range) => (
+                    <SelectItem value="">{listingTypeFilter === 'rent' ? 'All Rent' : 'All Prices'}</SelectItem>
+                    {getCurrentPriceRanges().map((range) => (
                       <SelectItem key={range.value} value={range.value}>
                         {range.label}
                       </SelectItem>

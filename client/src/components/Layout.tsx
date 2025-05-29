@@ -45,7 +45,7 @@ export default function Layout({ children }: LayoutProps) {
           isScrolled ? "shadow-lg" : ""
         }`}
       >
-        <div className="container flex h-16 items-center">
+        <div className="container flex h-16 items-center mx-6">
           <div className="mr-4 hidden md:flex">
             <Link href="/" className="mr-6 flex items-center space-x-2">
               <span className="text-2xl font-bold text-primary">Dream Ghar</span>

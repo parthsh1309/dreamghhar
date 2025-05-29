@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Bed, Bath, Square } from "lucide-react";
+import { MapPin, Bed, Bath, Square, ShoppingCart, Home } from "lucide-react";
 import { Link } from "wouter";
 import type { Property } from "@/data/properties";
 
@@ -20,6 +20,22 @@ export default function PropertyCard({ property }: PropertyCardProps) {
         />
         <Badge className="absolute top-2 left-2 bg-primary/90 text-primary-foreground">
           {property.type.charAt(0).toUpperCase() + property.type.slice(1)}
+        </Badge>
+        <Badge 
+          className={`absolute top-2 right-2 text-white ${
+            property.listingType === 'rent' 
+              ? 'bg-green-500 hover:bg-green-600' 
+              : 'bg-blue-500 hover:bg-blue-600'
+          }`}
+        >
+          <div className="flex items-center gap-1">
+            {property.listingType === 'rent' ? (
+              <Home className="h-3 w-3" />
+            ) : (
+              <ShoppingCart className="h-3 w-3" />
+            )}
+            {property.listingType === 'rent' ? 'For Rent' : 'For Sale'}
+          </div>
         </Badge>
       </div>
       <CardContent className="p-6">

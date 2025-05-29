@@ -5,37 +5,16 @@ import { Mail, Phone, Award, Users, TrendingUp } from "lucide-react";
 const agents = [
   {
     id: 1,
-    name: "Rohit Sharma",
+    name: "Ashu kumar",
     title: "Senior Real Estate Agent",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+    image: "https://i.ibb.co/ym0xyXZQ/Screenshot-20210403-204806-Gallery.jpg",
     bio: "10+ years experience in North Delhi real estate with expertise in residential properties.",
-    phone: "+91 98765 43210",
+    phone: "+918882224431",
     email: "rohit@dreamghar.com",
     specialties: ["Residential Properties", "Investment Guidance", "Market Analysis"],
     achievements: ["Top Performer 2023", "Client Satisfaction Award", "100+ Happy Families"]
   },
-  {
-    id: 2,
-    name: "Priya Kapoor",
-    title: "Property Consultant",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b332e234?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
-    bio: "Specialist in luxury apartments and investment properties in premium locations.",
-    phone: "+91 98765 43211",
-    email: "priya@dreamghar.com",
-    specialties: ["Luxury Properties", "Interior Design", "First-time Buyers"],
-    achievements: ["Excellence Award 2023", "Customer Choice", "Premium Sales Expert"]
-  },
-  {
-    id: 3,
-    name: "Amit Singh",
-    title: "Sales Manager",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
-    bio: "Expert in commercial and residential sales with strong negotiation skills.",
-    phone: "+91 98765 43212",
-    email: "amit@dreamghar.com",
-    specialties: ["Commercial Properties", "Negotiation", "Legal Documentation"],
-    achievements: ["Sales Leader 2023", "Deal Closer Award", "Client Trust Badge"]
-  }
+  
 ];
 
 export default function Agent() {
@@ -139,17 +118,24 @@ export default function Agent() {
                 </div>
 
                 {/* Contact Buttons */}
-                <div className="mt-4 space-y-2">
-                  <a href={`mailto:${agent.email}`}>
-                    <Button className="w-full" size="sm">
-                      <Mail className="mr-2 h-4 w-4" />
-                      Email {agent.name.split(' ')[0]}
+                <div className="mt-4 space-y-2  ">
+                  <a href={`https://wa.me/${agent.phone}?text=${encodeURIComponent("Hey, I need property consideration")}`}>
+                    <Button  className="w-full mt-4" size="sm">
+                      <Phone className="mr-2 h-4 w-4" />
+                      Whatsapp {agent.name.split(' ')[0]}
                     </Button>
                   </a>
                   <a href={`tel:${agent.phone}`}>
-                    <Button variant="outline" className="w-full" size="sm">
+                    <Button  className="w-full mt-4" size="sm">
                       <Phone className="mr-2 h-4 w-4" />
                       Call Now
+                    </Button>
+                  </a>
+                  
+                  <a href={`mailto:${agent.email}`}>
+                    <Button className="w-full mt-4" size="sm">
+                      <Mail className="mr-2 h-4 w-4" />
+                      Email {agent.name.split(' ')[0]}
                     </Button>
                   </a>
                 </div>
