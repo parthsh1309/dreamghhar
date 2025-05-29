@@ -231,6 +231,23 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Video Gallery */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3">
+              <Play className="h-8 w-8 text-red-600" />
+              Property Videos & Market Insights
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Watch our latest property tours, market analysis, and expert insights
+            </p>
+          </div>
+          
+          <YouTubeCarousel videos={youtubeVideos} />
+        </div>
+      </section>
+
       {/* Call to Action */}
       <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
