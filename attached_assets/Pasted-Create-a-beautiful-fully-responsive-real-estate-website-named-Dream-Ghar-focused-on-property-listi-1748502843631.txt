@@ -1,0 +1,101 @@
+Create a beautiful, fully responsive real estate website named Dream Ghar, focused on property listings in North Delhi. This site should be static (no backend or authentication) and easy to manage manually. Prioritize user engagement, mobile-friendly design, and clean UI.
+
+🧩 Core Features & Structure
+🏠 Home Page
+Branding with the name Dream Ghar clearly shown.
+
+Hero section with a welcome message and background image.
+
+Manually added featured properties in a grid or card layout.
+
+Highlight major North Delhi locations:
+
+Mukherjee Nagar
+
+GTB Nagar
+
+Outram Lane
+
+Hudson Lane
+
+Shalimar Bagh
+
+Nirankari Colony
+
+Call-to-action section inviting users to inquire or schedule a visit.
+
+🔍 Property Search Page
+Search/filter interface for location, price range, and property type.
+
+Dynamically filter visible property listings.
+
+Show a "No results found" message when applicable.
+
+📄 Individual Property Page
+Dedicated layout to show a single property with:
+
+Title, images, description, price, features.
+
+Location details (address + map placeholder).
+
+“Schedule a Visit” button linking to email or contact modal.
+
+🧑‍💼 Agent Page
+Page title: Our Agent
+
+List of agents with their name, photo, short bio, phone number, and email link.
+
+📞 Contact Page
+Business contact info: email and phone number.
+
+Social media links for Instagram and YouTube.
+
+Optional contact form (no backend; mailto or Formspree-style).
+
+✨ User Engagement Features
+Floating WhatsApp Icon (Bottom Right)
+
+Opens chat with pre-filled message:
+"Hey, I need property consideration"
+
+Use link format: https://wa.me/your_number?text=Hey%2C%20I%20need%20property%20consideration
+
+Theme Toggle (Light/Dark Mode)
+
+Add a switch in the header or footer to toggle theme.
+
+Remember user's theme preference.
+
+Sticky Navigation Bar
+
+Smooth Scroll Behavior for Internal Links
+
+Back to Top Button
+
+Animated Hover Effects on Property Cards
+
+Client Testimonials Section
+
+FAQ Section with Expand/Collapse Questions
+
+"Why Choose Dream Ghar" Section
+
+Include 3–5 bullet points or icons describing advantages.
+
+📁 Project Organization
+Structure the site into separate pages:
+
+Home
+
+Property Search
+
+Individual Property
+
+Agent
+
+Contact
+
+Use modular, clean, and organized code that's easy to update.
+
+Do not include any sign-up, login, user dashboard, or database integration.
+Keep the experience simple, static, and optimized for users looking to explore North Delhi real estate offerings through Dream Ghar.
