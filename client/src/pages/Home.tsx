@@ -8,13 +8,16 @@ import {
   Shield, 
   Clock, 
   Star,
-  ArrowRight
+  ArrowRight,
+  ShoppingCart
 } from "lucide-react";
 import PropertyCard from "@/components/PropertyCard";
 import { properties } from "@/data/properties";
 
 export default function Home() {
   const featuredProperties = properties.slice(0, 3);
+  const rentProperties = properties.filter(p => p.listingType === 'rent');
+  const buyProperties = properties.filter(p => p.listingType === 'buy');
 
   return (
     <div className="min-h-screen">
@@ -50,6 +53,16 @@ export default function Home() {
             <p className="text-xl text-muted-foreground">
               Discover premium properties in North Delhi's most sought-after locations
             </p>
+            <div className="flex justify-center gap-4 mt-6">
+              <Badge variant="outline" className="text-green-600 border-green-600">
+                <HomeIcon className="h-3 w-3 mr-1" />
+                {rentProperties.length} For Rent
+              </Badge>
+              <Badge variant="outline" className="text-blue-600 border-blue-600">
+                <ShoppingCart className="h-3 w-3 mr-1" />
+                {buyProperties.length} For Sale
+              </Badge>
+            </div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
@@ -58,13 +71,21 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="text-center">
-            <Link href="/properties">
-              <Button variant="outline" size="lg">
-                View All Properties
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
+          <div className="text-center space-y-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/properties">
+                <Button size="lg">
+                  View All Properties
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              <Link href="/search">
+                <Button variant="outline" size="lg">
+                  Advanced Search
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

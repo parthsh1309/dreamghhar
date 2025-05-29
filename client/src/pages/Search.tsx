@@ -164,12 +164,13 @@ export default function Search() {
           <h2 className="text-2xl font-semibold mb-2">
             Search Results ({filteredProperties.length} properties found)
           </h2>
-          {(locationFilter || typeFilter || priceFilter) && (
+          {(locationFilter || typeFilter || listingTypeFilter || priceFilter) && (
             <p className="text-muted-foreground">
               Filtered by: {[
+                listingTypeFilter && listingTypes.find(l => l.value === listingTypeFilter)?.label,
                 locationFilter && locations.find(l => l.value === locationFilter)?.label,
                 typeFilter && propertyTypes.find(t => t.value === typeFilter)?.label,
-                priceFilter && priceRanges.find(p => p.value === priceFilter)?.label
+                priceFilter && getCurrentPriceRanges().find(p => p.value === priceFilter)?.label
               ].filter(Boolean).join(', ')}
             </p>
           )}

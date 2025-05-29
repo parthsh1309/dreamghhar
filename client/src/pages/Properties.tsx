@@ -2,19 +2,25 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Search, ArrowRight } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Search, ArrowRight, Home, ShoppingCart } from "lucide-react";
 import { Link } from "wouter";
 import PropertyCard from "@/components/PropertyCard";
 import { properties } from "@/data/properties";
 
 export default function Properties() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [activeFilter, setActiveFilter] = useState<'all' | 'buy' | 'rent'>('all');
 
-  const filteredProperties = properties.filter(property =>
-    property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    property.locationDisplay.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    property.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredProperties = properties.filter(property => {
+    const matchesSearch = property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      property.locationDisplay.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      property.description.toLowerCase().includes(searchTerm.toLowerCase());
+    
+    const matchesFilter = activeFilter === 'all' || property.listingType === activeFilter;
+    
+    return matchesSearch && matchesFilter;
+  });
 
   return (
     <div className="min-h-screen py-8">
@@ -39,8 +45,40 @@ export default function Properties() {
           </div>
         </div>
 
-        {/* Quick Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
+          <Button
+            variant={activeFilter === 'all' ? 'default' : 'outline'}
+            onClick={() => setActiveFilter('all')}
+            className="flex items-center gap-2"
+          >
+            All Properties
+            <Badge variant="secondary" className="ml-1">
+              {properties.length}
+            </Badge>
+          </Button>
+          <Button
+            variant={activeFilter === 'buy' ? 'default' : 'outline'}
+            onClick={() => setActiveFilter('buy')}
+            className="flex items-center gap-2"
+          >
+            <ShoppingCart className="h-4 w-4" />
+            For Sale
+            <Badge variant="secondary" className="ml-1">
+              {properties.filter(p => p.listingType === 'buy').length}
+            </Badge>
+          </Button>
+          <Button
+            variant={activeFilter === 'rent' ? 'default' : 'outline'}
+            onClick={() => setActiveFilter('rent')}
+            className="flex items-center gap-2"
+          >
+            <Home className="h-4 w-4" />
+            For Rent
+            <Badge variant="secondary" className="ml-1">
+              {properties.filter(p => p.listingType === 'rent').length}
+            </Badge>
+          </Button>
           <Link href="/search">
             <Button variant="outline">
               Advanced Search
@@ -52,11 +90,15 @@ export default function Properties() {
         {/* Properties Grid */}
         <div className="mb-6">
           <h2 className="text-2xl font-semibold mb-2">
-            {searchTerm ? `Search Results (${filteredProperties.length})` : `All Properties (${properties.length})`}
+            {searchTerm ? `Search Results (${filteredProperties.length})` : 
+             activeFilter === 'all' ? `All Properties (${filteredProperties.length})` :
+             activeFilter === 'buy' ? `Properties for Sale (${filteredProperties.length})` :
+             `Properties for Rent (${filteredProperties.length})`}
           </h2>
           {searchTerm && (
             <p className="text-muted-foreground">
               Showing results for "{searchTerm}"
+              {activeFilter !== 'all' && ` in ${activeFilter === 'buy' ? 'sale' : 'rental'} properties`}
             </p>
           )}
         </div>
