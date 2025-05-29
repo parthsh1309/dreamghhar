@@ -9,10 +9,12 @@ import {
   Clock, 
   Star,
   ArrowRight,
-  ShoppingCart
+  ShoppingCart,
+  Play
 } from "lucide-react";
 import PropertyCard from "@/components/PropertyCard";
-import { properties } from "@/data/properties";
+import YouTubeCarousel from "@/components/YouTubeCarousel";
+import { properties, youtubeVideos } from "@/data/properties";
 
 export default function Home() {
   const featuredProperties = properties.slice(0, 3);
@@ -20,9 +22,9 @@ export default function Home() {
   const buyProperties = properties.filter(p => p.listingType === 'buy');
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen w-screen">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center">
+      <section className="relative h-screen w-full flex items-center justify-center">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -243,7 +245,7 @@ export default function Home() {
               </Button>
             </Link>
             <Link href="/properties">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
+              <Button size="lg" variant="secondary" className="border-white hover:bg-white hover:text-primary">
                 Browse Properties
               </Button>
             </Link>

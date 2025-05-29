@@ -1,10 +1,23 @@
 import { useState, useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Search as SearchIcon } from "lucide-react";
 import PropertyCard from "@/components/PropertyCard";
-import { properties, locations, propertyTypes, priceRanges, rentRanges, listingTypes } from "@/data/properties";
+import {
+  properties,
+  locations,
+  propertyTypes,
+  priceRanges,
+  rentRanges,
+  listingTypes,
+} from "@/data/properties";
 
 export default function Search() {
   const [locationFilter, setLocationFilter] = useState<string>("");
@@ -29,7 +42,9 @@ export default function Search() {
       }
 
       if (priceFilter) {
-        const [min, max] = priceFilter.split('-').map(p => p === '+' ? Infinity : parseInt(p));
+        const [min, max] = priceFilter
+          .split("-")
+          .map((p) => (p === "+" ? Infinity : parseInt(p)));
         if (max && (property.price < min || property.price > max)) {
           matches = false;
         } else if (!max && property.price < min) {
@@ -50,7 +65,7 @@ export default function Search() {
 
   // Get appropriate price ranges based on listing type
   const getCurrentPriceRanges = () => {
-    return listingTypeFilter === 'rent' ? rentRanges : priceRanges;
+    return listingTypeFilter === "rent" ? rentRanges : priceRanges;
   };
 
   return (
@@ -74,16 +89,21 @@ export default function Search() {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">Buy or Rent</label>
-                <Select value={listingTypeFilter} onValueChange={(value) => {
-                  setListingTypeFilter(value);
-                  setPriceFilter(""); // Reset price filter when changing listing type
-                }}>
+                <label className="block text-sm font-medium mb-2">
+                  Buy or Rent
+                </label>
+                <Select
+                  value={listingTypeFilter}
+                  onValueChange={(value) => {
+                    setListingTypeFilter(value);
+                    setPriceFilter(""); // Reset price filter when changing listing type
+                  }}
+                >
                   <SelectTrigger>
-                    <SelectValue placeholder="Buy or Rent" />
+                    <SelectValue placeholder="Both" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Both</SelectItem>
+                    <SelectItem value="Both">Both</SelectItem>
                     {listingTypes.map((type) => (
                       <SelectItem key={type.value} value={type.value}>
                         {type.label}
@@ -94,13 +114,18 @@ export default function Search() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Location</label>
-                <Select value={locationFilter} onValueChange={setLocationFilter}>
+                <label className="block text-sm font-medium mb-2">
+                  Location
+                </label>
+                <Select
+                  value={locationFilter}
+                  onValueChange={setLocationFilter}
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="All Locations" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All Locations</SelectItem>
+                    <SelectItem value="All Locations">All Locations</SelectItem>
                     {locations.map((location) => (
                       <SelectItem key={location.value} value={location.value}>
                         {location.label}
@@ -111,13 +136,15 @@ export default function Search() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Property Type</label>
+                <label className="block text-sm font-medium mb-2">
+                  Property Type
+                </label>
                 <Select value={typeFilter} onValueChange={setTypeFilter}>
                   <SelectTrigger>
                     <SelectValue placeholder="All Types" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All Types</SelectItem>
+                    <SelectItem value="All Types">All Types</SelectItem>
                     {propertyTypes.map((type) => (
                       <SelectItem key={type.value} value={type.value}>
                         {type.label}
@@ -129,14 +156,20 @@ export default function Search() {
 
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  {listingTypeFilter === 'rent' ? 'Rent Range' : 'Price Range'}
+                  {listingTypeFilter === "rent" ? "Rent Range" : "Price Range"}
                 </label>
                 <Select value={priceFilter} onValueChange={setPriceFilter}>
                   <SelectTrigger>
-                    <SelectValue placeholder={listingTypeFilter === 'rent' ? 'All Rent' : 'All Prices'} />
+                    <SelectValue
+                      placeholder={
+                        listingTypeFilter === "rent" ? "All Rent" : "All Prices"
+                      }
+                    />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">{listingTypeFilter === 'rent' ? 'All Rent' : 'All Prices'}</SelectItem>
+                    <SelectItem value="'rent' ? 'Rent Range' : 'Price Range'">
+                      {listingTypeFilter === "rent" ? "All Rent" : "All Prices"}
+                    </SelectItem>
                     {getCurrentPriceRanges().map((range) => (
                       <SelectItem key={range.value} value={range.value}>
                         {range.label}
@@ -147,7 +180,7 @@ export default function Search() {
               </div>
 
               <div className="flex items-end space-x-2">
-                <Button 
+                <Button
                   onClick={clearFilters}
                   variant="outline"
                   className="flex-1"
@@ -164,14 +197,26 @@ export default function Search() {
           <h2 className="text-2xl font-semibold mb-2">
             Search Results ({filteredProperties.length} properties found)
           </h2>
-          {(locationFilter || typeFilter || listingTypeFilter || priceFilter) && (
+          {(locationFilter ||
+            typeFilter ||
+            listingTypeFilter ||
+            priceFilter) && (
             <p className="text-muted-foreground">
-              Filtered by: {[
-                listingTypeFilter && listingTypes.find(l => l.value === listingTypeFilter)?.label,
-                locationFilter && locations.find(l => l.value === locationFilter)?.label,
-                typeFilter && propertyTypes.find(t => t.value === typeFilter)?.label,
-                priceFilter && getCurrentPriceRanges().find(p => p.value === priceFilter)?.label
-              ].filter(Boolean).join(', ')}
+              Filtered by:{" "}
+              {[
+                listingTypeFilter &&
+                  listingTypes.find((l) => l.value === listingTypeFilter)
+                    ?.label,
+                locationFilter &&
+                  locations.find((l) => l.value === locationFilter)?.label,
+                typeFilter &&
+                  propertyTypes.find((t) => t.value === typeFilter)?.label,
+                priceFilter &&
+                  getCurrentPriceRanges().find((p) => p.value === priceFilter)
+                    ?.label,
+              ]
+                .filter(Boolean)
+                .join(", ")}
             </p>
           )}
         </div>
@@ -180,7 +225,9 @@ export default function Search() {
           <Card>
             <CardContent className="text-center py-12">
               <SearchIcon className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-              <h3 className="text-2xl font-semibold mb-2">No Properties Found</h3>
+              <h3 className="text-2xl font-semibold mb-2">
+                No Properties Found
+              </h3>
               <p className="text-muted-foreground mb-4">
                 Try adjusting your search criteria to find more properties.
               </p>

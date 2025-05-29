@@ -45,10 +45,10 @@ export default function Layout({ children }: LayoutProps) {
           isScrolled ? "shadow-lg" : ""
         }`}
       >
-        <div className="container flex h-16 items-center mx-6">
+        <div className="container flex h-16 items-center ">
           <div className="mr-4 hidden md:flex">
             <Link href="/" className="mr-6 flex items-center space-x-2">
-              <span className="text-2xl font-bold text-primary">Dream Ghar</span>
+              <span className="text-2xl font-bold text-primary ml-5">Dream Ghar</span>
             </Link>
             <nav className="flex items-center space-x-6 text-sm font-medium">
               {navigation.map((item) => (
@@ -72,7 +72,7 @@ export default function Layout({ children }: LayoutProps) {
             <SheetTrigger asChild>
               <Button
                 variant="ghost"
-                className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+                className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden ml-4"
               >
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle Menu</span>
@@ -169,6 +169,8 @@ export default function Layout({ children }: LayoutProps) {
                 <li>GTB Nagar</li>
                 <li>Hudson Lane</li>
                 <li>Shalimar Bagh</li>
+                <li>Nirankari Colony</li>
+                <li>Outram Line</li>
               </ul>
             </div>
 
@@ -177,15 +179,17 @@ export default function Layout({ children }: LayoutProps) {
               <ul className="space-y-2 text-gray-300">
                 <li>
                   <i className="fas fa-envelope mr-2"></i>
-                  info@dreamghar.com
+                  dreamghhar@gmail.com
                 </li>
                 <li>
                   <i className="fas fa-phone mr-2"></i>
-                  +91 12345 67890
+                  +91 88822 24431
                 </li>
                 <li>
                   <i className="fas fa-map-marker-alt mr-2"></i>
-                  North Delhi, India
+                  1443/1, Outram Ln, opp. BBM depot,
+                  Delhi University Ground,
+                  Mukherjee Nagar, Delhi, 110009
                 </li>
               </ul>
             </div>

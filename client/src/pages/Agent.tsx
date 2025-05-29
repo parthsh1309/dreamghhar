@@ -10,7 +10,7 @@ const agents = [
     image: "https://i.ibb.co/ym0xyXZQ/Screenshot-20210403-204806-Gallery.jpg",
     bio: "10+ years experience in North Delhi real estate with expertise in residential properties.",
     phone: "+918882224431",
-    email: "rohit@dreamghar.com",
+    email: "dreamghhar@Gmail.com",
     specialties: ["Residential Properties", "Investment Guidance", "Market Analysis"],
     achievements: ["Top Performer 2023", "Client Satisfaction Award", "100+ Happy Families"]
   },

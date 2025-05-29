@@ -14,6 +14,7 @@ import {
   Calendar
 } from "lucide-react";
 import { Link } from "wouter";
+import PropertyImageCarousel from "@/components/PropertyImageCarousel";
 import { properties } from "@/data/properties";
 
 export default function PropertyDetail() {
@@ -61,16 +62,27 @@ export default function PropertyDetail() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2">
-            {/* Property Image */}
-            <div className="relative mb-6">
-              <img
-                src={property.image}
-                alt={property.title}
-                className="w-full h-96 object-cover rounded-lg"
+            {/* Property Image Carousel */}
+            <div className="mb-6">
+              <PropertyImageCarousel 
+                images={property.images}
+                youtubeUrl={property.youtubeUrl}
+                propertyTitle={property.title}
               />
-              <Badge className="absolute top-4 left-4 bg-primary/90 text-primary-foreground">
-                {property.type.charAt(0).toUpperCase() + property.type.slice(1)}
-              </Badge>
+              <div className="flex justify-between items-center mt-4">
+                <Badge className="bg-primary/90 text-primary-foreground">
+                  {property.type.charAt(0).toUpperCase() + property.type.slice(1)}
+                </Badge>
+                <Badge 
+                  className={`text-white ${
+                    property.listingType === 'rent' 
+                      ? 'bg-green-500' 
+                      : 'bg-blue-500'
+                  }`}
+                >
+                  {property.listingType === 'rent' ? 'For Rent' : 'For Sale'}
+                </Badge>
+              </div>
             </div>
 
             {/* Property Info */}

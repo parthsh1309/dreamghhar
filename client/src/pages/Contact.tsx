@@ -84,10 +84,10 @@ export default function Contact() {
                 <div>
                   <h3 className="font-medium mb-1">Phone</h3>
                   <a
-                    href="tel:+911234567890"
+                    href="tel:+91 8882224431"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    +91 8882224431 +91 9582500197
+                    +91 8882224431 
                   </a>
                 </div>
               </div>
@@ -125,7 +125,7 @@ export default function Contact() {
               <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
               <div className="flex space-x-4">
                 <a
-                  href="https://instagram.com/dreamghar"
+                  href="https://instagram.com/dreamghhar"
                   className="bg-white text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-pink-600 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -188,7 +188,7 @@ export default function Contact() {
                   </svg>
                 </a>
                 <a
-                  href="https://youtube.com/dreamghar"
+                  href="https://youtube.com/@DreamGhar-bj4us"
                   className="bg-white text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -198,7 +198,7 @@ export default function Contact() {
                   </svg>
                 </a>
                 <a
-                  href="https://wa.me/911234567890"
+                  href="https://wa.me/+91 8882224431?text=Hey%2C%20I%20need%20property%20consideration"
                   className="bg-green-500 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
