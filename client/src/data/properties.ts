@@ -20,13 +20,13 @@ export interface Property {
 export const properties: Property[] = [
   {
     id: 1,
-    title: "Luxury 3BHK Apartment",
-    location: "mukherjee-nagar",
-    locationDisplay: "Mukherjee Nagar",
-    type: "apartment",
+    title: "Luxury 3BHK Flat ",
+    location: "Gtb nagar",
+    locationDisplay: "Gtb nagar",
+    type: "flat",
     listingType: "buy",
-    price: 85,
-    priceDisplay: "₹85 Lakhs",
+    price: 290,
+    priceDisplay: "₹2.9 crore",
     image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
     images: [
       "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
@@ -34,9 +34,9 @@ export const properties: Property[] = [
       "https://images.unsplash.com/photo-1574891287478-4e32b0e1e2bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
       "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
       "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
     ],
-    youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    youtubeUrl: "https://www.youtube.com/watch?v=TkR10BXZyr4",
     description: "Spacious 3BHK apartment with modern amenities and excellent connectivity. Perfect for families looking for comfort and convenience in the heart of North Delhi.",
     features: ["3 Bedrooms", "2 Bathrooms", "Balcony", "Parking", "Lift", "24/7 Security"],
     area: "1200 sq ft",
@@ -267,44 +267,30 @@ export interface YouTubeVideo {
 export const youtubeVideos: YouTubeVideo[] = [
   {
     id: "1",
-    title: "North Delhi Real Estate Market Overview 2024",
-    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    description: "Complete overview of North Delhi property market trends and investment opportunities."
+    title: "3 BHK Flat in GTB Nagar Delhi 110009 – Itna Sasta Aur Sundar Ghar Dekha Hai Kabhi? 😲",
+    url: "https://youtu.be/TkR10BXZyr4?si=jgTuItUC97CyfovC",
+    thumbnail: "https://img.youtube.com/vi/TkR10BXZyr4/maxresdefault.jpg",
+    description: "इतना सस्ता और सुंदर 3 BHK घर देखा है कभी? 🏡 Location: GTB Nagar, Delhi – 110009"
   },
   {
     id: "2", 
-    title: "Mukherjee Nagar Property Tour",
-    url: "https://www.youtube.com/watch?v=jNQXAC9IVRw",
-    thumbnail: "https://img.youtube.com/vi/jNQXAC9IVRw/maxresdefault.jpg",
+    title: "Indra Vihar में 2 BHK फ्लैट का शानदार टूर near mukherjee nagar | Budget Friendly Home! ",
+    url: "https://youtu.be/LCLYD9dDVlU?si=oKLbVgbIoBHXMaWh",
+    thumbnail: "http://img.youtube.com/vi/LCLYD9dDVlU/mqdefault.jpg",
     description: "Virtual tour of premium properties in Mukherjee Nagar area."
   },
   {
     id: "3",
-    title: "Home Buying Guide for North Delhi",
-    url: "https://www.youtube.com/watch?v=M7lc1UVf-VE", 
-    thumbnail: "https://img.youtube.com/vi/M7lc1UVf-VE/maxresdefault.jpg",
+    title: "Park Facing 2BHK 3 Side Corner Flat in Indra Vihar, Delhi | Investment Opportunity | Dream Ghar",
+    url: "https://youtu.be/EaN5VgwbUTk?si=AiM40VsFeAWKDkiN", 
+    thumbnail: "https://img.youtube.com/vi/EaN5VgwbUTk/maxresdefault.jpg",
     description: "Expert tips and guidance for first-time home buyers in North Delhi."
   },
   {
     id: "4",
-    title: "Hudson Lane Investment Opportunities",
-    url: "https://www.youtube.com/watch?v=xm3YgoEiEDc",
-    thumbnail: "https://img.youtube.com/vi/xm3YgoEiEDc/maxresdefault.jpg", 
+    title: "Park Facing 2BHK 3 Side Corner Flat in Indra Vihar, Delhi | Investment Opportunity | Dream Ghar",
+    url: "https://youtu.be/EaN5VgwbUTk?si=AiM40VsFeAWKDkiN",
+    thumbnail: "https://img.youtube.com/vi/EaN5VgwbUTk/maxresdefault.jpg", 
     description: "Explore the best investment properties in trendy Hudson Lane area."
   },
-  {
-    id: "5",
-    title: "GTB Nagar Rental Market Analysis",
-    url: "https://www.youtube.com/watch?v=YE7VzlLtp-4",
-    thumbnail: "https://img.youtube.com/vi/YE7VzlLtp-4/maxresdefault.jpg",
-    description: "In-depth analysis of rental property market in GTB Nagar."
-  },
-  {
-    id: "6",
-    title: "Dream Ghar Success Stories",
-    url: "https://www.youtube.com/watch?v=GXfVc25H9N4",
-    thumbnail: "https://img.youtube.com/vi/GXfVc25H9N4/maxresdefault.jpg",
-    description: "Real stories from satisfied clients who found their dream homes with us."
-  }
 ];

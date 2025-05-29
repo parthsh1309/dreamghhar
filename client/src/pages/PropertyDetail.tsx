@@ -41,10 +41,19 @@ export default function PropertyDetail() {
     );
   }
 
-  const whatsappMessage = `I'm interested in ${property.title} in ${property.locationDisplay}. Can you provide more details?`;
-  const whatsappUrl = `https://wa.me/911234567890?text=${encodeURIComponent(whatsappMessage)}`;
+  
+  const scheduleVisit = `https://wa.me/918882224431?text=${encodeURIComponent(
+    `I would like to schedule a visit for ${property.title} in ${property.locationDisplay}. Please let me know the available dates and times.`
+  )}`
+
+  const whatsappUrl = `https://wa.me/918882224431?text=${encodeURIComponent(
+    `I'm interested in ${property.title} in ${property.locationDisplay}. Can you provide more details?`
+  )}`;
+
   const emailSubject = `Property Inquiry - ${property.title}`;
-  const emailUrl = `mailto:info@dreamghar.com?subject=${encodeURIComponent(emailSubject)}`;
+  const emailUrl = `mailto:dreamghhar@gmail.com?subject=${encodeURIComponent(emailSubject)}`;
+  
+
 
   return (
     <div className="min-h-screen py-8">
@@ -173,7 +182,7 @@ export default function PropertyDetail() {
                       Map view for {property.locationDisplay}
                     </p>
                     <p className="text-sm text-muted-foreground mt-1">
-                      Interactive map integration available
+                      coming soon
                     </p>
                   </div>
                 </div>
@@ -190,39 +199,41 @@ export default function PropertyDetail() {
                   Get in touch with our experts to schedule a visit or get more information.
                 </p>
                 
-                <div className="space-y-3">
-                  <a href={emailUrl}>
-                    <Button className="w-full" size="lg">
+                <div className="space-y-4">
+                  <a href={scheduleVisit}>
+                    <Button className="w-full " size="lg">
                       <Mail className="mr-2 h-4 w-4" />
                       Schedule a Visit
                     </Button>
                   </a>
                   
                   <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline" className="w-full" size="lg">
+                    <Button variant="outline" className="w-full mt-4" size="lg">
                       <MessageCircle className="mr-2 h-4 w-4" />
                       WhatsApp Inquiry
                     </Button>
                   </a>
                   
-                  <Link href="/contact">
-                    <Button variant="outline" className="w-full" size="lg">
+                  <a href="tel:+91888224431">
+                    <Button variant="outline" className="w-full mt-4" size="lg">
                       <Calendar className="mr-2 h-4 w-4" />
                       Contact Agent
                     </Button>
-                  </Link>
+                  </a>
+
                 </div>
 
                 <Separator className="my-6" />
 
                 <div className="text-center">
                   <p className="text-sm text-muted-foreground mb-2">
-                    Need financing help?
+                    Ready to find your dream home?
                   </p>
                   <p className="text-sm">
-                    We can assist with loan arrangements and legal formalities.
+                    Explore our latest listings and expert advice to make your move easy.
                   </p>
                 </div>
+
               </CardContent>
             </Card>
           </div>
