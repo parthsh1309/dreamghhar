@@ -1,4 +1,4 @@
-import { Switch, Route , Router as WouterRouter } from "wouter";
+import { Switch, Route, Router as WouterRouter,useLocation } from "wouter";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
@@ -13,9 +13,24 @@ import Agent from "@/pages/Agent";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/not-found";
 
+// 👇 Custom location hook to read path from query (e.g., /dreamghhar/?/search)
+const locationHook: () => [string, (to: string) => void] = () => {
+  const query = new URLSearchParams(window.location.search);
+  const path = query.keys().next().value || "/";
+
+  const navigate = (to: string) => {
+    window.history.pushState(null, "", `/dreamghhar/?${to}`);
+    // Dispatch event so Wouter picks up route change
+    window.dispatchEvent(new PopStateEvent("popstate"));
+  };
+
+  return [path, navigate];
+};
+
+
 function Router() {
   return (
-    <WouterRouter base="/dreamghhar">
+    <WouterRouter hook={locationHook}>
       <Layout>
         <Switch>
           <Route path="/" component={Home} />
