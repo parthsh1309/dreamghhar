@@ -36,7 +36,7 @@ export default function Home() {
             Dream Ghar
           </h1>
           <p className="text-xl md:text-2xl mb-8 fade-in">
-            Find Your Perfect Home in North Delhi
+            Find Your Perfect Home in North West Delhi
           </p>
           <Link href="/search">
             <Button size="lg" className="fade-in">

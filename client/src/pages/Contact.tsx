@@ -349,8 +349,15 @@ export default function Contact() {
                     Interactive map showing our office location in North Delhi
                   </p>
                   <p className="text-sm text-muted-foreground mt-1">
-                    Map integration available for precise location details
+                    Coming soon
                   </p>
+                  <hr/>
+                  <a href="https://www.google.com/maps/dir//1443%2F1,+Outram+Ln,+opp.+BBM+depot,+Delhi+University+Ground,+Mukherjee+Nagar,+Delhi,+110009/@28.7044904,77.128601,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x390cfdf662f5f607:0xb14adb07f38d60ac!2m2!1d77.2110024!2d28.7045154?entry=ttu&g_ep=EgoyMDI1MDUyNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" size="sm" className="mt-4">
+                      <MapPin className="mr-2 h-4 w-4" />
+                      View on Map
+                    </Button>
+                    </a>
                 </div>
               </div>
             </CardContent>

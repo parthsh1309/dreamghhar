@@ -46,7 +46,8 @@ export default function PropertyImageCarousel({
   };
 
   const getYouTubeThumbnail = (url: string) => {
-    const videoId = url.split('v=')[1]?.split('&')[0];
+    const videoId = url.split('v=')[1]?.split('&')[0]
+    console.log(videoId)
     return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
   };
 

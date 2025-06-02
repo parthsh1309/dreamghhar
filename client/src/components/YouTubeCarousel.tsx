@@ -43,10 +43,12 @@ export default function YouTubeCarousel({ videos }: YouTubeCarouselProps) {
               onClick={() => openVideo(actualVideo.url)}
             >
               <div className="relative overflow-hidden rounded-t-lg">
-                <img
+                <img 
                   src={actualVideo.thumbnail}
                   alt={actualVideo.title}
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  style={{ transform: 'rotate(0deg)', transformOrigin: 'center'}}
+
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
                   <div className="bg-red-600 text-white p-3 rounded-full group-hover:bg-red-700 transition-colors">
